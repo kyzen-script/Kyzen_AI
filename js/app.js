@@ -4,11 +4,10 @@
    ============================================================ */
 
 /* ==========================================================
-/* ==========================================================
-   1. CẤU HÌNH API KEY GEMINI (Lấy từ Biến môi trường)
+   1. CẤU HÌNH API KEY GEMINI (Thay Key vào đây)
    ========================================================== */
-const API_KEY = process.env.GEMINI_API_KEY;
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`;
+const API_KEY = "AQ.Ab8RN6I8t7xzCjGbz04xGZWG55JyAidWx8eKQiFbcxh2gEN_Dg";
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" + API_KEY;
 
 /* ==========================================================
    2. SYSTEM PROMPTS CHO 3 CHẾ ĐỘ
