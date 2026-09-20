@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trợ Lý Của Sếp</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #e9ecef; margin: 0; padding: 10px; display: flex; justify-content: center; }
+        #chat-container { width: 100%; max-width: 600px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; height: 90vh; }
+        #chat-box { flex: 1; padding: 20px; overflow-y: auto; border-bottom: 1px solid #ddd; }
+        .message { margin-bottom: 15px; line-height: 1.5; padding: 10px; border-radius: 8px; max-width: 85%; }
+        .user-msg { background-color: #007bff; color: white; align-self: flex-end; margin-left: auto; border-bottom-right-radius: 0; }
+        .ai-msg { background-color: #f1f0f0; color: #333; margin-right: auto; border-bottom-left-radius: 0; }
+        #input-area { display: flex; padding: 15px; background: #fff; border-radius: 0 0 12px 12px; }
+        #user-input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 16px; }
+        #send-btn { padding: 12px 20px; margin-left: 10px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+        #send-btn:active { background: #218838; }
+    </style>
+</head>
+<body>
+
+<div id="chat-container">
+    <div id="chat-box">
+        <div class="message ai-msg"><strong>AI:</strong> Chào Sếp! Hôm nay tôi giúp gì được cho Sếp?</div>
+    </div>
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Nhập lệnh ở đây..." onkeypress="handleKeyPress(event)">
+        <button id="send-btn" onclick="sendMessage()">Gửi</button>
+    </div>
+</div>
+
+<!-- Nạp thư viện Gemini API -->
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+<script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    // ĐIỀN API KEY VÀO ĐÂY (Giữ nguyên dấu ngoặc kép)
+    const API_KEY = "API_KEY_MOI_CUA_BAN"; 
+    
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        systemInstruction: "Bạn là trợ lý cá nhân của tôi. Trả lời ngắn gọn, hài hước và gọi tôi là 'Sếp'."
+    });
+
+    const chat = model.startChat({ history: [] });
+
+    window.sendMessage = async function() {
+        const inputField = document.getElementById("user-input");
+        const message = inputField.value.trim();
+        if (!message) return;
+
+        const chatBox = document.getElementById("chat-box");
+     
+ 
+        // Hiện tin nhắn của Sếp
+        chatBox.innerHTML += `<div class="message user-msg"><strong>Sếp:</strong> ${message}</div>`;
+        inputField.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        try {
+            // Lấy câu trả lời của AI
+            const result = await chat.sendMessage(message);
+            const responseText = result.response.text();
+            
+            // Hiện tin nhắn của AI
+            chatBox.innerHTML += `<div class="message ai-msg"><strong>AI:</strong> ${responseText.replace(/\n/g, '<br>')}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        } catch (error) {
+            chatBox.innerHTML += `<div class="message ai-msg" style="color:red;"><strong>Lỗi:</strong> Vui lòng kiểm tra lại API Key hoặc mạng internet.</div>`;
+        }
+    }
+
+    window.handleKeyPress = function(event) {
+        if (event.key === "Enter") sendMessage();
+    }
+</script>
+
+</body>
+<0000000

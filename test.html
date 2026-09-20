@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LQMarket - Test All Accounts</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    pre {
+      background: #1b1b1b;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>🧪 LQMarket - All Accounts API Test</h2>
+
+<button onclick="loadAccounts()">📦 Lấy tất cả acc</button>
+
+<pre id="output">Chưa tải dữ liệu...</pre>
+
+<script>
+const API = "https://lqmarket-web.vercel.app";
+
+async function loadAccounts() {
+  const output = document.getElementById("output");
+
+  output.textContent = "⏳ Đang gọi /api/accounts...";
+
+  try {
+    const response = await fetch(`${API}/api/accounts`);
+
+    const text = await response.text();
+
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = text;
+    }
+
+    output.textContent =
+      `HTTP ${response.status}\n\n` +
+      JSON.stringify(data, null, 2);
+
+  } catch (error) {
+    output.textContent =
+      "❌ Request failed:\n\n" + error;
+  }
+}
+</script>
+
+</body>
+</html>
