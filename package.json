@@ -1,0 +1,18 @@
+{
+  "name": "kyzen-ai",
+  "version": "1.0.0",
+  "description": "Kyzen AI — Liquid Glass Studio. Trợ lý AI đa năng (Gemini) với đăng nhập/đăng ký, chế độ Admin AI, gửi hình ảnh và copy code.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["ai", "gemini", "kyzen", "liquid-glass", "chatbot"],
+  "author": "Lý A Trong",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

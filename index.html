@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kyzen AI — Liquid Glass Studio</title>
+<meta name="description" content="Kyzen AI — Trợ lý AI thế hệ mới với giao diện Liquid Glass 3D. Tác giả: Lý A Trong." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/auth.css" />
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<!-- ============ AUTH SCREEN ============ -->
+<div class="auth-screen" id="authScreen">
+  <div class="auth-aurora">
+    <span class="aa aa1"></span>
+    <span class="aa aa2"></span>
+    <span class="aa aa3"></span>
+  </div>
+
+  <div class="auth-card" id="authCard">
+    <!-- LEFT: AI VIDEO -->
+    <div class="auth-visual">
+      <video id="authVideo" autoplay muted loop playsinline poster="assets/ai-bg.png">
+        <source src="assets/ai-intro.mp4" type="video/mp4" />
+      </video>
+      <div class="auth-visual-overlay"></div>
+      <div class="auth-visual-content">
+        <div class="av-badge">
+          <span class="av-dot"></span>
+          <span>Kyzen Neural Core</span>
+        </div>
+        <h2>Chào mừng đến với<br /><span class="grad-text">Kyzen AI</span></h2>
+        <p>Trợ lý AI thế hệ mới với giao diện Liquid Glass 3D. Đăng nhập để lưu lịch sử và mở khoá toàn bộ sức mạnh.</p>
+        <div class="av-features">
+          <div class="av-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21 8 13.8 2 9.4h7.6z"/></svg>
+            <span>Trả lời đa lĩnh vực</span>
+          </div>
+          <div class="av-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+            <span>Lập trình cao cấp</span>
+          </div>
+          <div class="av-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Phân tích hình ảnh</span>
+          </div>
+        </div>
+        <p class="av-author">Được tạo bởi <strong>Lý A Trong</strong></p>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="auth-form-panel">
+      <div class="auth-brand">
+        <div class="logo-orb small">
+          <img src="assets/kyzen-logo.jpeg" alt="Kyzen AI" />
+        </div>
+        <div class="brand-text">
+          <h1>Kyzen AI</h1>
+          <p>Liquid Glass Studio</p>
+        </div>
+      </div>
+
+      <div class="auth-tabs" id="authTabs">
+        <div class="auth-glider" id="authGlider"></div>
+        <button class="auth-tab active" data-tab="login">Đăng nhập</button>
+        <button class="auth-tab" data-tab="register">Đăng ký</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form class="auth-form active" id="loginForm" autocomplete="on">
+        <label class="auth-field">
+          <span class="af-label">Email hoặc tên đăng nhập</span>
+          <div class="auth-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <input type="text" id="loginUser" placeholder="ban@email.com" required />
+          </div>
+        </label>
+        <label class="auth-field">
+          <span class="af-label">Mật khẩu</span>
+          <div class="auth-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <input type="password" id="loginPass" placeholder="••••••••" required />
+            <button type="button" class="pw-toggle" data-target="loginPass" title="Hiện/ẩn mật khẩu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </label>
+        <div class="auth-row">
+          <label class="auth-check"><input type="checkbox" id="rememberMe" checked /><span>Ghi nhớ đăng nhập</span></label>
+          <button type="button" class="link-btn" id="forgotBtn">Quên mật khẩu?</button>
+        </div>
+        <button type="submit" class="auth-submit">
+          <span>Đăng nhập</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form class="auth-form" id="registerForm" autocomplete="on">
+        <label class="auth-field">
+          <span class="af-label">Tên hiển thị</span>
+          <div class="auth-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="regName" placeholder="Nguyễn Văn A" required />
+          </div>
+        </label>
+        <label class="auth-field">
+          <span class="af-label">Email</span>
+          <div class="auth-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <input type="email" id="regEmail" placeholder="ban@email.com" required />
+          </div>
+        </label>
+        <label class="auth-field">
+          <span class="af-label">Mật khẩu</span>
+          <div class="auth-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <input type="password" id="regPass" placeholder="Tối thiểu 6 ký tự" required />
+            <button type="button" class="pw-toggle" data-target="regPass" title="Hiện/ẩn mật khẩu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </label>
+        <button type="submit" class="auth-submit">
+          <span>Tạo tài khoản</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>hoặc</span></div>
+
+      <button class="google-btn" id="googleBtn">
+        <svg viewBox="0 0 48 48" width="20" height="20"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        <span>Tiếp tục với Google</span>
+      </button>
+
+      <button class="guest-btn" id="guestBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Tiếp tục không cần đăng nhập</span>
+      </button>
+
+      <div class="auth-msg" id="authMsg"></div>
+
+      <div class="admin-hint" id="adminHint">
+        <div class="ah-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Đăng nhập Admin AI</span>
+        </div>
+        <p>Admin Kyzen — AI trả lời đầy đủ và chính xác nhất mọi yêu cầu.</p>
+        <button type="button" class="ah-fill" id="adminFill">Điền nhanh tài khoản Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-loading" id="authLoading">
+    <div class="al-ring"></div>
+    <p id="authLoadingText">Đang khởi động Kyzen Neural Core...</p>
+  </div>
+</div>
+
+<!-- ============ BACKGROUND ============ -->
+<div class="bg-stage">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+<div class="bg-grid"></div>
+<div class="bg-grain"></div>
+<div class="particles" id="particles"></div>
+
+<!-- ============ APP ============ -->
+<div class="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar reveal d1">
+    <div class="brand">
+      <div class="logo-orb">
+        <img src="assets/kyzen-logo.jpeg" alt="Kyzen AI" />
+      </div>
+      <div class="brand-text">
+        <h1>Kyzen AI</h1>
+        <p>Liquid Glass Studio</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="status-pill">
+        <span class="dot"></span>
+        <span>Gemini Online</span>
+      </div>
+      <div class="user-chip" id="userChip" hidden>
+        <button class="uc-btn" id="ucBtn">
+          <span class="uc-avatar" id="ucAvatar">K</span>
+          <span class="uc-meta">
+            <span class="uc-name" id="ucName">Khách</span>
+            <span class="uc-role" id="ucRole">Guest</span>
+          </span>
+          <svg class="uc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="user-menu" id="userMenu">
+          <div class="um-head">
+            <span class="uc-avatar big" id="umAvatar">K</span>
+            <div>
+              <strong id="umName">Khách</strong>
+              <small id="umEmail">guest@kyzen.ai</small>
+            </div>
+          </div>
+          <div class="um-info" id="umInfo"></div>
+          <button class="um-item" id="umLogout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+            <span>Đăng xuất</span>
+          </button>
+        </div>
+      </div>
+      <button class="icon-btn" id="clearBtn" title="Xoá cuộc trò chuyện">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero reveal d2">
+    <h2>Trợ lý AI đa năng của bạn</h2>
+    <p>Hỏi đáp tổng hợp, học tập thông minh và lập trình cao cấp — tất cả trong một giao diện kính lỏng 3D.</p>
+  </section>
+
+  <!-- MODE SWITCHER -->
+  <div class="mode-switch reveal d3" id="modeSwitch">
+    <div class="mode-glider" id="modeGlider"></div>
+    <button class="mode-btn active" data-mode="all">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>
+      </svg>
+      <span>Tổng hợp</span>
+    </button>
+    <button class="mode-btn" data-mode="study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>
+      </svg>
+      <span>Học tập</span>
+    </button>
+    <button class="mode-btn" data-mode="code">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+      </svg>
+      <span>Lập trình</span>
+    </button>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <main class="chat-panel reveal d4">
+    <div class="chat-scroll" id="chatScroll">
+      <!-- WELCOME -->
+      <div class="welcome" id="welcome">
+        <div class="welcome-orb">
+          <img src="assets/kyzen-logo.jpeg" alt="Kyzen AI" />
+        </div>
+        <h3>Xin chào, mình là Kyzen ✨</h3>
+        <p>Chọn một gợi ý bên dưới hoặc nhập câu hỏi của bạn. Bạn cũng có thể gửi kèm hình ảnh để mình phân tích.</p>
+        <p class="author-line">Được tạo bởi <strong>Lý A Trong</strong></p>
+        <div class="suggestions" id="suggestions">
+          <button class="suggestion" data-prompt="Giải thích ngắn gọn về trí tuệ nhân tạo và các ứng dụng phổ biến của nó trong đời sống.">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <span>AI là gì và ứng dụng trong đời sống?</span>
+          </button>
+          <button class="suggestion" data-prompt="Hãy tạo cho tôi một lộ trình học lập trình Python cho người mới bắt đầu trong 30 ngày.">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span>
+            <span>Lộ trình học Python trong 30 ngày</span>
+          </button>
+          <button class="suggestion" data-prompt="Viết một hàm JavaScript kiểm tra số nguyên tố, kèm giải thích chi tiết và độ phức tạp thuật toán.">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+            <span>Hàm JS kiểm tra số nguyên tố</span>
+          </button>
+          <button class="suggestion" data-prompt="Tóm tắt 5 sự kiện lịch sử quan trọng nhất của thế kỷ 20 và ý nghĩa của chúng.">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+            <span>5 sự kiện lịch sử thế kỷ 20</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPOSER -->
+    <div class="composer-wrap">
+      <div class="image-preview" id="imagePreview"></div>
+      <div class="composer">
+        <textarea id="input" rows="1" placeholder="Nhập câu hỏi của bạn... (Shift + Enter để xuống dòng)"></textarea>
+        <div class="composer-actions">
+          <label class="attach-btn" title="Gửi hình ảnh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <input type="file" id="fileInput" accept="image/*" multiple hidden />
+          </label>
+          <button class="send-btn" id="sendBtn" title="Gửi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="composer-hint">Kyzen AI có thể mắc lỗi — hãy kiểm tra thông tin quan trọng.</p>
+    </div>
+  </main>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  <span id="toastText">Đã sao chép!</span>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
